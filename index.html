@@ -4,13 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <div id="app"><h1>Hello World!</h1></div>
-
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="App.js"></script>
+
+    <div id="app">
+      <h1>{{message}}</h1>
+      <p>My name is {{name}}</p>
+      <div>Counter is {{count}}</div>
+      <button @click="count++">+</button>
+      <button @click="count=0">reset</button>
+      <button @click="count--">-</button>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            message: "Hello World",
+            name: "Adebayo Pokanu",
+            count: 0,
+
+            methods: {
+              increment() {
+                this.count++;
+              },
+              reset() {
+                this.count = 0;
+              },
+              decrement() {
+                this.count--;
+              },
+            },
+          };
+        },
+      }).mount("#app");
+    </script>
   </body>
 </html>
